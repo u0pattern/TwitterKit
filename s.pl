@@ -18,7 +18,7 @@ sub flow_token(){
 	$f = LWP::UserAgent->new();
 	$f->default_header("content-type"=>'application/json');
 	$f->default_header("authorization"=>'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA');
-	$f->default_header("x-guest-token"=>key());
+	$f->default_header("x-guest-token"=>'1022921332416307200');
 	$fr = $f->post('https://api.twitter.com/1.1/onboarding/task.json?flow_name=signup', Content => '{"input_flow_data":{}}');
 	if($fr->content=~/{"flow_token":"(.+?)"/){ $flow = $1; }
 	return $flow;
