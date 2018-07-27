@@ -27,7 +27,7 @@ sub create(){
 	$cr = LWP::UserAgent->new();
 	$cr->default_header("content-type"=>'application/json');
 	$cr->default_header("authorization"=>'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA');
-	$cr->default_header("x-guest-token"=>key());
+	$cr->default_header("x-guest-token"=>'1022921332416307200');
 	$po = '{"flow_token":"'.flow_token().'","subtask_inputs":[{"subtask_id":"GenerateTemporaryPassword","fetch_temporary_password":{"password":"8a36acd2e8c130731744","link":"next_link"}},{"subtask_id":"Signup","sign_up":{"email":"jfuguhru'.time().'gh@gmail.com","js_instrumentation":{},"link":"next_link","name":"1337r00td","personalization_settings":{"allow_cookie_use":true,"allow_device_personalization":true,"allow_partnerships":true,"allow_ads_personalization":true}}},{"subtask_id":"SignupReview","sign_up_review":{"link":"signup_with_email_next_link"}}]}';
 	$cre = $cr->post('https://api.twitter.com/1.1/onboarding/task.json', Content => $po);
 	if($cre->header('set-cookie')=~/auth_token=(.+?);/){ $token=$1; }
